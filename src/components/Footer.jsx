@@ -16,9 +16,7 @@ import {
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import EmailIcon from '@mui/icons-material/Email';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import Map from './Map';
 import {
   sendToGoogleSheets,
@@ -392,48 +390,23 @@ const Footer = () => {
 
                     <Box sx={{display: 'flex', justifyContent: 'center', gap: 2, mb: 3}}>
                         <IconButton
+                            component="a"
+                            href="https://www.instagram.com/toddler_school_if?igsh=MWhpaHRnb3Q2MGY4Mg=="
+                            target="_blank"
+                            rel="noopener noreferrer"
                             sx={{
                                 backgroundColor: 'rgba(255, 255, 255, 0.1)',
                                 color: 'white',
+                                fontSize: '2rem',
+                                padding: 2,
                                 '&:hover': {
-                                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                                    backgroundColor: 'rgba(225, 48, 108, 0.8)',
+                                    transform: 'scale(1.1)',
+                                    transition: 'all 0.3s ease'
                                 }
                             }}
                         >
-                            <TelegramIcon/>
-                        </IconButton>
-                        <IconButton
-                            sx={{
-                                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                color: 'white',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                }
-                            }}
-                        >
-                            <WhatsAppIcon/>
-                        </IconButton>
-                        <IconButton
-                            sx={{
-                                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                color: 'white',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                }
-                            }}
-                        >
-                            <FacebookIcon/>
-                        </IconButton>
-                        <IconButton
-                            sx={{
-                                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                                color: 'white',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                                }
-                            }}
-                        >
-                            <PhoneIcon/>
+                            <InstagramIcon fontSize="large"/>
                         </IconButton>
                     </Box>
 
