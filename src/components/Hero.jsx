@@ -105,16 +105,15 @@ const Hero = () => {
               <Paper
                 elevation={10}
                 sx={{
-                  width: '100%',
-                  height: 400,
+                  display: 'inline-block',
                   backgroundColor: 'rgba(255, 255, 255, 0.1)',
                   borderRadius: 3,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
                   backdropFilter: 'blur(10px)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
-                  overflow: 'hidden'
+                  overflow: 'hidden',
+                  maxWidth: '100%',
+                  maxHeight: 400,
+                  mb: '10px'
                 }}
               >
                 <video
@@ -123,10 +122,13 @@ const Hero = () => {
                   muted
                   playsInline
                   style={{
-                    width: '100%',
-                    height: '100%',
-                    objectFit: 'cover',
-                    borderRadius: '12px'
+                    display: 'block',
+                    objectFit: 'contain',
+                    borderRadius: '12px',
+                    maxWidth: '100%',
+                    maxHeight: 400,
+                    width: 'auto',
+                    height: 'auto'
                   }}
                 >
                   <source src="/toodler-banner.mp4" type="video/mp4" />
