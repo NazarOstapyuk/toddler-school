@@ -113,19 +113,25 @@ const Hero = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   backdropFilter: 'blur(10px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)'
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  overflow: 'hidden'
                 }}
               >
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: 'white',
-                    opacity: 0.7,
-                    textAlign: 'center'
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: '12px'
                   }}
                 >
-                  [Місце для головного зображення школи]
-                </Typography>
+                  <source src="/toodler-banner.mp4" type="video/mp4" />
+                  Ваш браузер не підтримує відео елементи.
+                </video>
               </Paper>
             </Box>
           </Grid>
