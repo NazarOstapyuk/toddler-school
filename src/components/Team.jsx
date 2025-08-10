@@ -14,10 +14,13 @@ import {
 const Team = () => {
   const teamMembers = [
     {
-      name: 'Христина Клейнота',
-      position: 'Засновниця та директорка Toddler School',
-      description: 'В свої 14 років я мріяла стати вчителем, а в 15 - осягла, що можу відкрити свою власну школу. Наша мета полягала в тому, щоб створити турботливу освітню атмосферу, в якій кожна дитина зможе розвиватися та відкривати свої здібності.',
-      isFounder: true
+      name: 'Лілія Мацьків',
+      position: 'Директорка Toddler School',
+      description: 'Ціню справедливість, відкритість і повагу у всьому, що роблю. Вірю, що справжня сила школи — у людях і спільних цінностях, які об\'єднують нас. Моє завдання — створити середовище, де панує довіра, підтримка і прагнення до розвитку.',
+      values: 'Для мене важливо, щоб кожен почувався почутим і цінним, а робота будувалася на чесності, відповідальності та взаємоповазі. Разом ми формуємо майбутнє, базоване на принципах справедливості і партнерства.',
+      personal: 'Поза роботою ціную час із родиною, саморозвиток і натхнення, яке дають подорожі та книги.',
+      photo: '/directorPhoto.JPG',
+      isDirector: true
     },
     {
       name: 'Кузуб Світлана',
@@ -70,7 +73,7 @@ const Team = () => {
           Команда
         </Typography>
 
-        {/* Founder Card */}
+        {/* Director Card */}
         <Box sx={{ mb: 6 }}>
           <Card
             elevation={4}
@@ -85,48 +88,65 @@ const Team = () => {
               <Grid item xs={12} md={4}>
                 <Box
                   sx={{
-                    height: { xs: 200, md: '100%' },
-                    minHeight: 300,
+                    height: { xs: 250, md: '100%' },
+                    minHeight: 400,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     p: 3
                   }}
                 >
-                  <Avatar
+                  <Box
+                    component="img"
+                    src={teamMembers[0].photo}
+                    alt={teamMembers[0].name}
                     sx={{
-                      width: 150,
-                      height: 150,
-                      fontSize: '3rem',
-                      bgcolor: 'rgba(255, 255, 255, 0.2)',
-                      border: '3px solid rgba(255, 255, 255, 0.3)'
+                      width: 200,
+                      height: 200,
+                      borderRadius: '50%',
+                      objectFit: 'cover',
+                      border: '4px solid rgba(255, 255, 255, 0.3)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.2)'
                     }}
-                  >
-                    ТС
-                  </Avatar>
+                  />
                 </Box>
               </Grid>
               <Grid item xs={12} md={8}>
-                <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <CardContent sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
                   <Typography
                     variant="h4"
                     component="h3"
                     gutterBottom
-                    sx={{ fontWeight: 'bold' }}
+                    sx={{ fontWeight: 'bold', mb: 2 }}
                   >
                     {teamMembers[0].name}
                   </Typography>
                   <Typography
                     variant="h6"
-                    sx={{ mb: 3, opacity: 0.9 }}
+                    sx={{ mb: 3, opacity: 0.9, fontWeight: 'medium' }}
                   >
                     {teamMembers[0].position}
                   </Typography>
+                  
                   <Typography
                     variant="body1"
-                    sx={{ lineHeight: 1.7, fontSize: '1.1rem' }}
+                    sx={{ lineHeight: 1.7, fontSize: '1rem', mb: 2 }}
                   >
                     {teamMembers[0].description}
+                  </Typography>
+                  
+                  <Typography
+                    variant="body1"
+                    sx={{ lineHeight: 1.7, fontSize: '1rem', mb: 2 }}
+                  >
+                    {teamMembers[0].values}
+                  </Typography>
+                  
+                  <Typography
+                    variant="body2"
+                    sx={{ lineHeight: 1.6, fontSize: '0.95rem', opacity: 0.9, fontStyle: 'italic' }}
+                  >
+                    {teamMembers[0].personal}
                   </Typography>
                 </CardContent>
               </Grid>

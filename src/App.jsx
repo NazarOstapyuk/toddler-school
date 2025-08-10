@@ -14,16 +14,28 @@ function App() {
     <Box>
       <Header />
       <main>
-        <Hero />
         <Box id="about">
+          <Hero />
+        </Box>
+        <Box id="advantages">
           <Advantages />
         </Box>
-        <Studios />
-        <Reviews />
-        <Team />
-        <Documents />
+        <Box id="studios">
+          <Studios />
+        </Box>
+        <Box id="reviews">
+          <Reviews />
+        </Box>
+        <Box id="team">
+          <Team />
+        </Box>
+        <Box id="documents">
+          <Documents />
+        </Box>
       </main>
-      <Footer />
+      <Box id="contact">
+        <Footer />
+      </Box>
     </Box>
   );
 }

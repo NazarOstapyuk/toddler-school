@@ -31,7 +31,7 @@ import {
 const Footer = () => {
     const [formData, setFormData] = useState({
         name: '',
-        phone: ''
+        phone: '+38 '
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,11 +58,65 @@ const Footer = () => {
         return () => clearInterval(interval);
     }, []);
 
+    // Функція форматування номера телефону
+    const formatPhoneInput = (value) => {
+        // Видаляємо всі нецифрові символи
+        const numbers = value.replace(/\D/g, '');
+        
+        // Якщо пусто, повертаємо початковий формат
+        if (numbers.length === 0) {
+            return '+38 ';
+        }
+        
+        // Якщо починається з 38, залишаємо як є
+        // Якщо починається з 0, замінюємо на 380
+        // Інакше додаємо 38
+        let formattedNumbers = numbers;
+        if (numbers.startsWith('0') && numbers.length > 1) {
+            formattedNumbers = '38' + numbers;
+        } else if (!numbers.startsWith('38') && numbers.length > 0) {
+            formattedNumbers = '38' + numbers;
+        }
+        
+        // Обмежуємо до 12 цифр (38 + 10 цифр номера)
+        formattedNumbers = formattedNumbers.slice(0, 12);
+        
+        // Форматуємо у вигляді +38 (XXX) XXX-XX-XX
+        let formatted = '+' + formattedNumbers.slice(0, 2);
+        
+        if (formattedNumbers.length > 2) {
+            formatted += ' (' + formattedNumbers.slice(2, 5);
+            if (formattedNumbers.length > 5) {
+                formatted += ') ' + formattedNumbers.slice(5, 8);
+                if (formattedNumbers.length > 8) {
+                    formatted += '-' + formattedNumbers.slice(8, 10);
+                    if (formattedNumbers.length > 10) {
+                        formatted += '-' + formattedNumbers.slice(10, 12);
+                    }
+                }
+            } else if (formattedNumbers.length === 5) {
+                formatted += ')';
+            }
+        } else {
+            formatted += ' ';
+        }
+        
+        return formatted;
+    };
+
     const handleInputChange = (event) => {
         const {name, value} = event.target;
+        
+        let processedValue = value;
+        
+        // Спеціальна обробка для поля телефону
+        if (name === 'phone') {
+            processedValue = formatPhoneInput(value);
+        }
+        
         setFormData(prev => ({
             ...prev,
-            [name]: value
+            [name]: processedValue
         }));
 
         // Очищаємо помилки при введенні
@@ -127,7 +181,7 @@ const Footer = () => {
                 setCanSubmit(canSubmitForm());
 
                 setSubmitStatus('success');
-                setFormData({name: '', phone: ''});
+                setFormData({name: '', phone: '+38 '});
             } else {
                 setSubmitStatus('error');
             }
@@ -226,14 +280,26 @@ const Footer = () => {
                                             value={formData.name}
                                             onChange={handleInputChange}
                                             required
-                                            variant="outlined"
+                                            variant="filled"
                                             disabled={isSubmitting}
                                             error={!!errors.name}
                                             helperText={errors.name}
                                             sx={{
-                                                '& .MuiOutlinedInput-root': {
+                                                '& .MuiFilledInput-root': {
                                                     backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                                    borderRadius: 2,
+                                                    borderRadius: '4px 4px 0 0',
+                                                    '&:hover': {
+                                                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                                    },
+                                                    '&.Mui-focused': {
+                                                        backgroundColor: 'rgba(255, 255, 255, 1)',
+                                                    }
+                                                },
+                                                '& .MuiInputLabel-root.Mui-focused': {
+                                                    color: '#ff9800',
+                                                },
+                                                '& .MuiFilledInput-root.Mui-focused:after': {
+                                                    borderBottomColor: '#ff9800',
                                                 }
                                             }}
                                         />
@@ -246,15 +312,27 @@ const Footer = () => {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             required
-                                            variant="outlined"
+                                            variant="filled"
                                             disabled={isSubmitting}
                                             error={!!errors.phone}
-                                            helperText={errors.phone || "Приклад: +380501234567"}
-                                            placeholder="+380501234567"
+                                            helperText={errors.phone || "Приклад: +38 (050) 123-45-67"}
+                                            placeholder="+38 (0XX) XXX-XX-XX"
                                             sx={{
-                                                '& .MuiOutlinedInput-root': {
+                                                '& .MuiFilledInput-root': {
                                                     backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                                                    borderRadius: 2,
+                                                    borderRadius: '4px 4px 0 0',
+                                                    '&:hover': {
+                                                        backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                                                    },
+                                                    '&.Mui-focused': {
+                                                        backgroundColor: 'rgba(255, 255, 255, 1)',
+                                                    }
+                                                },
+                                                '& .MuiInputLabel-root.Mui-focused': {
+                                                    color: '#ff9800',
+                                                },
+                                                '& .MuiFilledInput-root.Mui-focused:after': {
+                                                    borderBottomColor: '#ff9800',
                                                 }
                                             }}
                                         />
